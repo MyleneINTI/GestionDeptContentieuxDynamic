@@ -23,7 +23,6 @@ public class AffaireController {
 	@RequestMapping(value="affaires", method=RequestMethod.GET)
 	public List<Affaire> findAll() {
 		return affaireService.find(Affaire.class);
-		
 	}
 	
 	@RequestMapping(value="affaires/{id}", method = RequestMethod.GET)
