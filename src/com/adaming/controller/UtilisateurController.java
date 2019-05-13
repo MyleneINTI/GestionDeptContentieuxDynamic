@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.entities.Affaire;
 import com.adaming.entities.Utilisateur;
+import com.adaming.service.impl.UtilisateurHistService;
+import com.adaming.service.interfaces.IUtilisateurHistService;
 import com.adaming.service.interfaces.IUtilisateurService;
 
 @Controller
@@ -19,6 +21,8 @@ public class UtilisateurController {
 	
 	@Autowired
 	IUtilisateurService utilisateurService;
+	@Autowired
+	IUtilisateurHistService utilisateurHistService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
@@ -50,7 +54,7 @@ public class UtilisateurController {
 	public void deleteUtilisateur(@PathVariable("id") Long id) {
 		Utilisateur utilisateur1 = new Utilisateur();
 		utilisateur1 = utilisateurService.getById(Utilisateur.class, id);
-		utilisateur1 = utilisateurHistService.save(utilisateur1);
+		utilisateurHistService.create(utilisateur1);
 		utilisateurService.delete(utilisateur1);
 	}
 	

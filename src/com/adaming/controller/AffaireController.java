@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.entities.Affaire;
+import com.adaming.service.interfaces.IAffaireHistService;
 import com.adaming.service.interfaces.IAffaireService;
 
 @Controller
@@ -19,6 +20,8 @@ public class AffaireController {
 	
 	@Autowired
 	IAffaireService affaireService;
+	@Autowired
+	IAffaireHistService affaireHistService;
 	
 	@RequestMapping(value="affaires", method=RequestMethod.GET)
 	public List<Affaire> findAll() {
@@ -45,7 +48,7 @@ public class AffaireController {
 	public void deleteAffaire(@PathVariable("id") Long id) {
 		Affaire affaire1 = new Affaire();
 		affaire1 = affaireService.getById(Affaire.class, id);
-		affaire1 = affaireHistService.save(affaire1);
+		affaireHistService.create(affaire1);
 		affaireService.delete(affaire1);
 	}
 	
