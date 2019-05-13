@@ -5,4 +5,5 @@ import com.adaming.utils.ServiceGeneric;
 
 public interface IUtilisateurService extends ServiceGeneric<Utilisateur>{
 
+	public Utilisateur findByUsername(String username);
 }

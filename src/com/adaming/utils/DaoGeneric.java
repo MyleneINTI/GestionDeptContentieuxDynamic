@@ -13,5 +13,6 @@ public interface DaoGeneric<T> {
 	public T getById(Class<T> obj, Long id);
 	
 	public List<T> find(Class<T> obj);
+	
 
 }
