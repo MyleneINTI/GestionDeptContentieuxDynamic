@@ -30,7 +30,7 @@
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
 			</beans:props>
 		</beans:property>
-		<beans:property name="packagesToScan" value = "com.adaming.entities" />
+		<beans:property name="packagesToScan" value = "com.adaming.entities, com.adaming.entitiesHist" />
 	</beans:bean>
 	
 	<context:annotation-config/>
@@ -41,6 +41,7 @@
 	<context:component-scan base-package="com.adaming.dao.impl"/>
 	<context:component-scan base-package="com.adaming.service.impl"/>
 	<context:component-scan base-package="com.adaming.entities"/>
+	<context:component-scan base-package="com.adaming.entitiesHist"/>
 	<context:component-scan base-package="com.adaming.controller"/>
 	<context:component-scan base-package="com.adaming.utils"/>
 	
