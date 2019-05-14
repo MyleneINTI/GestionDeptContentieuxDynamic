@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Document implements Serializable{
 	private String nom;
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Affaire affaire;
 
 	

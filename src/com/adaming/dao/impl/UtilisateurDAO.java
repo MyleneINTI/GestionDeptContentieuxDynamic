@@ -1,6 +1,11 @@
 package com.adaming.dao.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -22,5 +27,6 @@ public class UtilisateurDAO extends DaoGenericImpl<Utilisateur> implements IUtil
 		Criteria crit = session.createCriteria(Utilisateur.class).add(Restrictions.like("username", username));
 		return (Utilisateur) crit.uniqueResult();
 	}
+	
 
 }

@@ -18,7 +18,6 @@ public class UtilisateurHist {
 	private String prenom;
 	
 	//Pour Spring Security
-	@Column(unique = true)
 	private String username;
 	private String password;
 

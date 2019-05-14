@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.adaming.entities.Affaire;
 import com.adaming.entities.Utilisateur;
+import com.adaming.entitiesHist.UtilisateurHist;
 import com.adaming.service.impl.UtilisateurHistService;
 import com.adaming.service.interfaces.IUtilisateurHistService;
 import com.adaming.service.interfaces.IUtilisateurService;
@@ -55,8 +56,16 @@ public class UtilisateurController {
 	public void deleteUtilisateur(@PathVariable("id") Long id) {
 		Utilisateur utilisateur1 = new Utilisateur();
 		utilisateur1 = utilisateurService.getById(Utilisateur.class, id);
-		utilisateurHistService.create(utilisateur1);
+		UtilisateurHist utilHist = new UtilisateurHist();
+		utilHist.setNom(utilisateur1.getNom());
+		utilHist.setPrenom(utilisateur1.getPrenom());
+		utilHist.setEmail(utilisateur1.getEmail());
+		utilHist.setUsername(utilisateur1.getUsername());
+		utilHist.setPassword(utilisateur1.getPassword());
+		//utilisateur1.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+		utilisateurHistService.create(utilHist);
 		utilisateurService.delete(utilisateur1);
+		
 	}
 	
 	@RequestMapping(value = "utilisateurs/{id}", method = RequestMethod.PUT)

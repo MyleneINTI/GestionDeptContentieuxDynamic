@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adaming.entities.Tache;
+import com.adaming.entitiesHist.TacheHist;
 import com.adaming.service.interfaces.ITacheHistService;
 import com.adaming.service.interfaces.ITacheService;
 
@@ -49,7 +50,12 @@ public class TacheController {
 	public void deleteTache(@PathVariable("id") Long id) {
 		Tache tache1 = new Tache();
 		tache1 = tacheService.getById(Tache.class, id);
-		tacheHistService.create(tache1);
+		TacheHist tacheHist = new TacheHist();
+		tacheHist.setDateCreation(tache1.getDateCreation());
+		tacheHist.setDescription(tache1.getDescription());
+		tacheHist.setStatutAudience(tache1.isStatutAudience());
+		tacheHist.setTitre(tache1.getTitre());
+		tacheHistService.create(tacheHist);
 		tacheService.delete(tache1);
 		
 	}

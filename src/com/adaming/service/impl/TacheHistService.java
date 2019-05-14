@@ -4,10 +4,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.entities.Tache;
+import com.adaming.entitiesHist.TacheHist;
 import com.adaming.service.interfaces.ITacheHistService;
 
 @Service
 @Transactional
-public class TacheHistService extends ServiceGenericImpl<Tache> implements ITacheHistService{
+public class TacheHistService extends ServiceGenericImpl<TacheHist> implements ITacheHistService{
 
 }

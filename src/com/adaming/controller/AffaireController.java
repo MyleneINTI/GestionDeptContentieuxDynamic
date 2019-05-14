@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adaming.entities.Affaire;
+import com.adaming.entitiesHist.AffaireHist;
 import com.adaming.service.interfaces.IAffaireHistService;
 import com.adaming.service.interfaces.IAffaireService;
 
@@ -47,7 +48,12 @@ public class AffaireController {
 	public void deleteAffaire(@PathVariable("id") Long id) {
 		Affaire affaire1 = new Affaire();
 		affaire1 = affaireService.getById(Affaire.class, id);
-		affaireHistService.create(affaire1);
+		AffaireHist affaireHist = new AffaireHist();
+		affaireHist.setDescription(affaire1.getDescription());
+		affaireHist.setReference(affaire1.getReference());
+		affaireHist.setTitre(affaire1.getTitre());
+		affaireHist.setStatut(affaire1.getStatut());
+		affaireHistService.create(affaireHist);
 		affaireService.delete(affaire1);
 	}
 	
