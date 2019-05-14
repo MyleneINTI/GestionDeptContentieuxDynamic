@@ -3,12 +3,12 @@ package com.adaming.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.adaming.entities.Affaire;
 import com.adaming.entities.Utilisateur;
@@ -16,15 +16,16 @@ import com.adaming.service.impl.UtilisateurHistService;
 import com.adaming.service.interfaces.IUtilisateurHistService;
 import com.adaming.service.interfaces.IUtilisateurService;
 
-@Controller
+@RestController
 public class UtilisateurController {
 	
 	@Autowired
 	IUtilisateurService utilisateurService;
 	@Autowired
 	IUtilisateurHistService utilisateurHistService;
+	/*
 	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;*/
 	
 	@RequestMapping(value="utilisateurs", method=RequestMethod.GET)
 	public List<Utilisateur> findAll() {
@@ -43,7 +44,7 @@ public class UtilisateurController {
 		utilisateur1.setNom(utilisateur.getNom());
 		utilisateur1.setPrenom(utilisateur.getPrenom());
 		utilisateur1.setUsername(utilisateur.getUsername());
-		utilisateur1.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+		//utilisateur1.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
 		utilisateur1.setRoles(utilisateur.getRoles());
 		utilisateur1.setTaches(utilisateur.getTaches());
 		utilisateurService.create(utilisateur1);
@@ -65,7 +66,7 @@ public class UtilisateurController {
 		currentUtilisateur.setNom(utilisateur.getNom());
 		currentUtilisateur.setPrenom(utilisateur.getPrenom());
 		currentUtilisateur.setUsername(utilisateur.getUsername());
-		currentUtilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+		//currentUtilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
 		currentUtilisateur.setRoles(utilisateur.getRoles());
 		currentUtilisateur.setTaches(utilisateur.getTaches());
 		utilisateurService.create(currentUtilisateur);
