@@ -47,7 +47,7 @@ public class RoleController {
 	public Role updateRole (@PathVariable("id") Long id, @RequestBody Role role) {
 		Role currentRole = roleService.getById(Role.class, id);
 		currentRole.setLibelle(role.getLibelle());
-		roleService.create(currentRole);
+		roleService.update(currentRole);
 		return currentRole;
 	}
 

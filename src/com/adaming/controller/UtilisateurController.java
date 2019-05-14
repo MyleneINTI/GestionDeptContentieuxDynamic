@@ -78,7 +78,7 @@ public class UtilisateurController {
 		//currentUtilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
 		currentUtilisateur.setRoles(utilisateur.getRoles());
 		currentUtilisateur.setTaches(utilisateur.getTaches());
-		utilisateurService.create(currentUtilisateur);
+		utilisateurService.update(currentUtilisateur);
 		return currentUtilisateur;
 	}
 
