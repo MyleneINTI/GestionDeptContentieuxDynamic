@@ -3,6 +3,7 @@ package com.adaming.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import com.adaming.service.impl.UtilisateurHistService;
 import com.adaming.service.interfaces.IUtilisateurHistService;
 import com.adaming.service.interfaces.IUtilisateurService;
 
+@CrossOrigin("*")
 @RestController
 public class UtilisateurController {
 	
